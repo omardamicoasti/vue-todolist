@@ -14,22 +14,29 @@ var app = new Vue({
       "Dormire",
     ],
     newThing: "",
-    //lastRemoved: null,
+    lastRemoved: "",
   }, // chiusura data
 
   methods: {
-    adder: function () {
-      this.things.push(this.newThing);
+    adder() {
+      if (!this.things.includes(this.newThing)) {
+        this.things.push(this.newThing);
+      } else {
+        alert("Already on your list.");
+      }
     },
     remover(index) {
-      this.things.splice(index, 1);
-      //this.lastRemoved = this.things.splice(index, 1);
-      //console.log(this.lastRemoved);
+      this.lastRemoved = this.things.splice(index, 1);
+      this.lastRemoved = this.lastRemoved[0];
+      console.log(this.lastRemoved);
     },
-    /*undo() {
-      this.things.push(this.lastRemoved);
-    }*/
+    undo() {
+      if (!this.things.includes(this.lastRemoved)) {
+        this.things.push(this.lastRemoved);
+      } else {
+        alert('You can Undo only once.');
+      }
+    },
   }, // chiusura methods
-  
 }); // chiusura vue
 Vue.config.devtools = true;

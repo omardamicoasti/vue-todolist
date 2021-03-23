@@ -21,6 +21,7 @@
             <div id="bar">
                 <input placeholder="New thing to do" type="text" v-model="newThing" @keyup.enter="adder">
                 <button @click="adder">Aggiungi</button>
+                <button @click="undo"><i class="fas fa-undo"></i></button>
             </div>
             <div id="list">
                 <ul v-if="things.length > 0">
